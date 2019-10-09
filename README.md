@@ -28,14 +28,15 @@ The `dataset` folder in this repository is empty. You can download the sample da
 ```
     ├── dataset                   <- root
         ├── training_set          <- training set folders
-        |   ├── images            <- drone image files
+        |   ├── images            <- drone image files for training
         |   ├── floating        
         |   |      └── mask       <- mask image files
         |   └── emergent          
         |          └── mask       <- mask image files
         |
         ├── test_set              <- validation set folders
-               └── images         <- drone image files
+        |      ├── images         <- drone image files for testing
+        |      └── pred_masks     <- predicted mask files (empty before testing)    
 
 ```  
 
@@ -74,11 +75,11 @@ You can use the code to build a new model for your own drone data, but you need 
 - [Anaconda / Python 3](https://www.continuum.io/downloads)
 - [TensorFlow 1.12](https://www.tensorflow.org/)
 - [Keras 2.2](https://keras.io/)
-- [sklearn 0.16](https://scikit-learn.org/stable/)
 - [Pillow 6.2.0](https://pillow.readthedocs.io/en/stable/)
+- [scikit-image 0.15.0](https://scikit-image.org/)
 
 ## Optional:
-- [scikit-image 0.15.0](https://scikit-image.org/)
+- [sklearn 0.16](https://scikit-learn.org/stable/)
 
 ## Relevant links
 Links:
