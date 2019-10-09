@@ -86,7 +86,7 @@ model.load_weights('unet_keras_flow_cera.hdf5')
 # Process test images, overlay prediction masks, change white to red
 datagen = ImageDataGenerator(rescale= 1./255) 
 img = datagen.flow_from_directory(('data/test_set/'),target_size = (256,256),batch_size=1,shuffle = False, color_mode = "rgb") 
-results = model.predict_generator(num_test_img,4,verbose=1)
+results = model.predict_generator(img,num_test_img,verbose=1)
 # save predictions
 saveResult('data/test_set/pred_masks/', results)
 
