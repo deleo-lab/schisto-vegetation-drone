@@ -39,11 +39,16 @@ For questions, email: zacqoo@gmail.com
 """ 
 # ------------------------------------------------------------------------------ 
 # import keras libraries
-from keras.callbacks import ModelCheckpoint
-#from keras.preprocessing.image import ImageDataGenerator
+#from keras.callbacks import ModelCheckpoint
+from keras.preprocessing.image import ImageDataGenerator
 from unet_model import unet
 from data_generator import trainGenerator 
 from data_generator import saveResult
+
+from PIL import Image
+import numpy as np
+import glob
+import os
 # ------------------------------------------------------------------------------ 
 # Set up file path
 path = 'data/training_set'
@@ -60,6 +65,8 @@ steps_per_epoch = 150
 learning_rate = 1e-4
 # pre trained weight, default = None
 pretrained_weights = None
+# number of test images
+num_test_img = 4
 # ------------------------------------------------------------------------------  
 #data augmentation
 data_gen_args = dict(rescale= 1./255,
@@ -79,34 +86,31 @@ model.load_weights('unet_keras_flow_cera.hdf5')
 # Process test images, overlay prediction masks, change white to red
 datagen = ImageDataGenerator(rescale= 1./255) 
 img = datagen.flow_from_directory(('data/test_set/'),target_size = (256,256),batch_size=1,shuffle = False, color_mode = "rgb") 
-results = model.predict_generator(img,4,verbose=1)
+results = model.predict_generator(num_test_img,4,verbose=1)
 # save predictions
-saveResult('data/test_set/pred_masks/',results)
+saveResult('data/test_set/pred_masks/', results)
 
-# import library
-from PIL import Image
-import numpy as np
-
-import glob
+# load test images
 image_list = []
 image_filename = []
 for filename in sorted(glob.glob('data/test_set/images/*.png')):
     im=Image.open(filename)
     image_list.append(im)
     image_filename.append(filename)
-
+# print list of test image filenames
 image_filename
 
-#import glob
+# load predicted mask images
 mask_list = []
 mask_filename = []
 for filename in sorted(glob.glob('data/test_set/pred_masks/*.png')):
     mask=Image.open(filename)
     mask_list.append(mask)
     mask_filename.append(filename)
-
+# print list of predicted mask image filenames
 mask_filename
 
+# Process test images, overlay prediction masks, change white to red
 for (img, mask, filename) in zip(image_list, mask_list, image_filename):
   # resize mask to match drone image size
   new_width  = img.size[0]
@@ -124,7 +128,7 @@ for (img, mask, filename) in zip(image_list, mask_list, image_filename):
   background = mask_resize_red.convert("RGBA")
   overlay = img.convert("RGBA")
   new_img = Image.blend(background, overlay, 0.85)
-  fullpath = os.path.join(filename + '_pred' + '.' + "png")
+  file_name = filename.split('.')
+  fullpath = os.path.join(file_name[0] + '_pred' + '.' + "png")
   print('saving ', filename)
   new_img.save(fullpath)
-
