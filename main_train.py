@@ -78,4 +78,3 @@ model.fit_generator(myGene,steps_per_epoch=steps_per_epoch,epochs=epochs,callbac
 
 # save weights to drive
 model.save_weights('unet_1.hdf5')
-
