@@ -23,7 +23,7 @@ We define two classes for the semtantic segmentation task, including floating an
 ![sample_1_mask.png](sample_1_mask.png)
 
 ## Data
-The `dataset` folder in this repository is empty. You can download the sample dataset [here](https://) (including label masks). The file structure is shown below:
+The `dataset` folder in this repository is empty. You can download the sample dataset [here](https://drive.google.com/file/d/1gcCqBPzKSeLufCt9PGrQaN2ztnV9fl4Z/view?usp=sharing) (including label masks). The file structure is shown below:
 
 ```
     ├── dataset                   <- root
@@ -62,7 +62,10 @@ The script will:
 - (2) Produce segmentation maps from test images
 
 ## Results
-The best model (`unet_keras_flow_cera.hdf5`) segments dark-blue floating vegetation with 85% accuracy.
+The best model (`unet_keras_flow_cera.hdf5`) segments dark-blue floating vegetation with 85% accuracy. The `hdf5` file can be downloaded [here](https://drive.google.com/file/d/1fmM8JZvY1Z_aECE5nHYXy-CQd0w4TbOF/view?usp=sharing)
+
+![drone_sample.jpeg](drone_sample.jpeg)
+![drone_seg_sample.png](drone_seg_sample.png)
 
 ## Re-train for new data
 You can use the code to build a new model for your own drone data, but you need to create label masks and may need to make further modifications on the code.
