@@ -23,7 +23,7 @@ We define two classes for the semtantic segmentation task, including floating an
 ![sample_1_mask.png](sample_1_mask.png)
 
 ## Data
-The `dataset` folder in this repository is empty. You can download the sample dataset [here](https://drive.google.com/file/d/1w9BVucHyRS__F0fg58YhcqpfuJR3ejQG/view?usp=sharing) (including label masks). The file structure is shown below:
+The `dataset` folder in this repository is empty. You can download the sample dataset [here](https://drive.google.com/file/d/1iYgm1cz4Tocx-dP86igN7VqdKOeXzTHh/view?usp=sharing) (including label masks). The file structure is shown below:
 
 ```
     ├── dataset                   <- root
