@@ -26,11 +26,11 @@ Utility script for Keras generator for data augmentation.
 
 """
 from __future__ import print_function
-from keras.preprocessing.image import ImageDataGenerator, img_to_array, load_img
+from keras.preprocessing.image import ImageDataGenerator#, img_to_array, load_img
 import numpy as np 
 import os
-import glob
-#import skimage.io as io
+#import glob
+import skimage.io as io
 #import skimage.transform as trans
 
 Sky = [128,128,128]
@@ -151,3 +151,4 @@ def saveResult(save_path,npyfile,flag_multi_class = False,num_class = 2):
     for i,item in enumerate(npyfile):
         img = labelVisualize(num_class,COLOR_DICT,item) if flag_multi_class else item[:,:,0]
         io.imsave(os.path.join(save_path,"%d_predict.png"%i),img)
+        
