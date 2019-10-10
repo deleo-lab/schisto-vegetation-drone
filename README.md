@@ -41,7 +41,9 @@ The `dataset` folder in this repository is empty. You can download the sample da
 ```  
 
 ## Code
-The script is in Python, building CNNs and U-Net model, using Keras package with Tensorflow backened. Augmenting in training data is also built in the code. Main script for training is `main_train.py` where you can adjust model parameters, such as batch size and training epoch. U-Net model building and data preprocessing are in `model_train.py`, where you can adjust hyperparameters, such as drop out rate. Main script for making predictions for validation set is `main_validation.py`; loading weights and model building are handled in `model_validation.py`. `.py` is the utility script for plotting confusion matrix of the results.
+The script is in Python, building CNNs and U-Net model, using Keras package with Tensorflow backened. Augmenting in training data is also built in the code. Main script for training is `main_train.py` where you can adjust model parameters, such as batch size and training epoch. U-Net model building and data preprocessing are in `model_train.py`, where you can adjust hyperparameters, such as learning rate. Main script for making predictions for validation set is `main_validation.py`; loading weights and model building are handled in `model_validation.py`. `.py` is the utility script for plotting confusion matrix of the results.
+
+The default drone image size is 256 x 256 x 3 (RGB bands).
 
 ## Run
 For training, run:
@@ -60,7 +62,7 @@ python main_test.py
 ```
 The script will:
 - (1) Load the weights (HDF5 file, such as`unet.hdf5`)
-- (2) Produce segmentation maps from test images
+- (2) Produce segmentation maps from test images, save in the 'images' folder
 
 ## Results
 The best model (`unet_keras_flow_cera.hdf5`) segments dark-blue floating vegetation with 85% accuracy. The `hdf5` file can be downloaded [here](https://drive.google.com/file/d/1fmM8JZvY1Z_aECE5nHYXy-CQd0w4TbOF/view?usp=sharing).
